@@ -1,0 +1,11 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="32" cy="32" r="32" fill="#0e639c"/>
+  
+  <!-- Code Brackets -->
+  <path d="M20 22L12 32L20 42" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M44 22L52 32L44 42" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Middle Slash -->
+  <path d="M36 18L28 46" stroke="#569cd6" stroke-width="3" stroke-linecap="round"/>
+</svg>
