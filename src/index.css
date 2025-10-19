@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* VSCode Theme - Dark Color Scheme */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 210 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 100% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 210 100% 50%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    /* VSCode Dark Theme Colors */
+    --background: 220 13% 13%;  /* #1e1e1e - VSCode editor background */
+    --foreground: 0 0% 83%;     /* #d4d4d4 - VSCode text */
+    --card: 220 13% 18%;        /* #252526 - VSCode sidebar */
+    --card-foreground: 0 0% 83%;
+    --popover: 220 13% 18%;
+    --popover-foreground: 0 0% 83%;
+    --primary: 207 82% 39%;     /* #0e639c - VSCode button blue */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 13% 18%;
+    --secondary-foreground: 0 0% 83%;
+    --muted: 220 13% 25%;       /* #3e3e42 - VSCode active line */
+    --muted-foreground: 0 0% 63%; /* #9d9d9d */
+    --accent: 207 82% 39%;      /* VSCode button blue */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 100% 67%;  /* #f48771 - VSCode error */
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 13% 25%;      /* #3e3e42 */
+    --input: 220 13% 25%;
+    --ring: 207 82% 39%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* VSCode-inspired utilities */
+@layer utilities {
+  .vscode-editor-bg {
+    background-color: #1e1e1e;
+  }
+
+  .vscode-sidebar-bg {
+    background-color: #252526;
+  }
+
+  .vscode-accent {
+    color: #569cd6;
+  }
+
+  .vscode-green {
+    color: #4ec9b0;
+  }
+
+  .vscode-yellow {
+    color: #dcdcaa;
+  }
+
+  .vscode-orange {
+    color: #ce9178;
+  }
+
+  .vscode-purple {
+    color: #c586c0;
+  }
+
+  .vscode-blue {
+    color: #569cd6;
+  }
+}
+
