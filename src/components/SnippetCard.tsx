@@ -91,17 +91,17 @@ export const SnippetCard = ({
   const codePreview = snippet.code.slice(0, 200);
 
   return (
-    <Card className="p-4 sm:p-6 bg-[#252526] border border-[#3e3e42] hover:border-[#569cd6] hover:shadow-xl hover:shadow-[#569cd6]/10 transition-all duration-300 transform hover:scale-[1.02] group">
+    <Card className="p-4 sm:p-6 bg-[#252526] border border-[#3e3e42] hover:border-[#569cd6] hover:shadow-xl hover:shadow-[#569cd6]/10 transition-all duration-300 transform hover:scale-[1.02] group w-full overflow-hidden">
       <div className="flex items-start justify-between mb-3 sm:mb-4 gap-2">
-        <div className="flex-1 min-w-0">
+        <div className="flex-1 min-w-0 overflow-hidden">
           <div className="flex items-center gap-2 mb-2">
-            <h3 className="font-semibold text-base sm:text-lg md:text-xl text-[#d4d4d4] group-hover:text-[#569cd6] transition-colors truncate">{snippet.title}</h3>
+            <h3 className="font-semibold text-base sm:text-lg md:text-xl text-[#d4d4d4] group-hover:text-[#569cd6] transition-colors truncate flex-1 min-w-0">{snippet.title}</h3>
             {!snippet.is_public && (
               <Lock className="h-3 w-3 sm:h-4 sm:w-4 text-[#9d9d9d] flex-shrink-0" />
             )}
           </div>
           {snippet.summary && (
-            <p className="text-xs sm:text-sm text-[#9d9d9d] leading-relaxed line-clamp-2">{snippet.summary}</p>
+            <p className="text-xs sm:text-sm text-[#9d9d9d] leading-relaxed line-clamp-2 break-words">{snippet.summary}</p>
           )}
         </div>
         <div className="flex items-center gap-0.5 sm:gap-1 flex-shrink-0">
@@ -139,21 +139,24 @@ export const SnippetCard = ({
         </div>
       </div>
 
-      <div className="mb-3 sm:mb-4 overflow-hidden rounded-md border border-[#3e3e42] group-hover:border-[#569cd6]/30 transition-colors">
-        <SyntaxHighlighter
-          language={snippet.language}
-          style={vscDarkPlus}
-          customStyle={{
-            margin: 0,
-            padding: "0.75rem",
-            fontSize: "0.75rem",
-            maxHeight: "150px",
-            background: "#1e1e1e",
-          }}
-          wrapLongLines={true}
-        >
-          {codePreview}
-        </SyntaxHighlighter>
+      <div className="mb-3 sm:mb-4 overflow-hidden rounded-md border border-[#3e3e42] group-hover:border-[#569cd6]/30 transition-colors w-full">
+        <div className="overflow-x-auto">
+          <SyntaxHighlighter
+            language={snippet.language}
+            style={vscDarkPlus}
+            customStyle={{
+              margin: 0,
+              padding: "0.75rem",
+              fontSize: "0.75rem",
+              maxHeight: "150px",
+              background: "#1e1e1e",
+              overflowX: "auto",
+            }}
+            wrapLongLines={true}
+          >
+            {codePreview}
+          </SyntaxHighlighter>
+        </div>
         {snippet.code.length > 200 && (
           <p className="text-[10px] sm:text-xs text-[#9d9d9d] mt-1 sm:mt-2 px-2 sm:px-3 flex items-center gap-1 pb-2">
             <Eye className="inline h-2.5 w-2.5 sm:h-3 sm:w-3" /> Click to view full code
@@ -161,21 +164,21 @@ export const SnippetCard = ({
         )}
       </div>
 
-      <div className="flex items-center justify-between mb-2 sm:mb-3 gap-2">
-        <div className="flex flex-wrap gap-1 sm:gap-2 flex-1 min-w-0">
-          <Badge className="bg-[#0e639c] hover:bg-[#1177bb] text-white border-0 text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5">
+      <div className="flex items-center justify-between mb-2 sm:mb-3 gap-2 w-full">
+        <div className="flex flex-wrap gap-1 sm:gap-2 flex-1 min-w-0 overflow-hidden">
+          <Badge className="bg-[#0e639c] hover:bg-[#1177bb] text-white border-0 text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 flex-shrink-0">
             {snippet.language}
           </Badge>
           {snippet.tags.slice(0, 2).map((tag, i) => (
             <Badge 
               key={i} 
-              className="bg-[#1e1e1e] border border-[#3e3e42] text-[#9d9d9d] hover:border-[#569cd6] hover:text-[#569cd6] text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5"
+              className="bg-[#1e1e1e] border border-[#3e3e42] text-[#9d9d9d] hover:border-[#569cd6] hover:text-[#569cd6] text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 flex-shrink-0 max-w-[120px] truncate"
             >
               {tag}
             </Badge>
           ))}
           {snippet.tags.length > 2 && (
-            <Badge className="bg-[#1e1e1e] border border-[#3e3e42] text-[#9d9d9d] text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5">
+            <Badge className="bg-[#1e1e1e] border border-[#3e3e42] text-[#9d9d9d] text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 flex-shrink-0">
               +{snippet.tags.length - 2}
             </Badge>
           )}
@@ -252,9 +255,9 @@ export const SnippetCard = ({
         </div>
       </div>
 
-      <p className="text-[10px] sm:text-xs text-[#6a6a6a] flex items-center gap-1 sm:gap-2">
-        <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#4ec9b0]"></span>
-        {new Date(snippet.created_at).toLocaleDateString()}
+      <p className="text-[10px] sm:text-xs text-[#6a6a6a] flex items-center gap-1 sm:gap-2 truncate">
+        <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#4ec9b0] flex-shrink-0"></span>
+        <span className="truncate">{new Date(snippet.created_at).toLocaleDateString()}</span>
       </p>
     </Card>
   );
