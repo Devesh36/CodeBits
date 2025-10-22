@@ -98,26 +98,26 @@ const Search = () => {
     <div className="min-h-screen bg-[#1e1e1e]">
       <Navigation user={user} />
       
-      <main className="container mx-auto px-4 py-12 max-w-7xl">
+  <main className="container mx-auto px-4 sm:px-6 py-8 sm:py-10 max-w-7xl">
         {/* Search Bar */}
-        <div className="mb-12">
+        <div className="mb-8 sm:mb-12">
           <form onSubmit={handleSubmit} className="max-w-4xl mx-auto">
             <div className="relative">
-              <div className="absolute left-5 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                <SearchIcon className="h-6 w-6 text-[#569cd6]" />
+              <div className="absolute left-3 sm:left-5 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                <SearchIcon className="h-5 w-5 sm:h-6 sm:w-6 text-[#569cd6]" />
               </div>
               <Input
-                placeholder="Search snippets by title, language, or description..."
+                placeholder="Search snippets..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                className="pl-16 pr-32 h-16 rounded-lg border-2 border-[#3e3e42] bg-[#252526] text-[#d4d4d4] placeholder:text-[#6a6a6a] focus:border-[#569cd6] focus:ring-2 focus:ring-[#569cd6]/30 text-lg shadow-lg transition-all"
+                className="pl-12 sm:pl-16 pr-24 sm:pr-32 h-12 sm:h-16 rounded-lg border-2 border-[#3e3e42] bg-[#252526] text-[#d4d4d4] placeholder:text-[#6a6a6a] focus:border-[#569cd6] focus:ring-2 focus:ring-[#569cd6]/30 text-sm sm:text-lg shadow-lg transition-all"
               />
               <Button 
                 type="submit"
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 h-12 px-6 rounded-lg bg-[#0e639c] hover:bg-[#1177bb] text-white font-semibold shadow-lg hover:shadow-xl hover:shadow-[#0e639c]/30 transition-all"
+                className="absolute right-2 sm:right-2 top-1/2 transform -translate-y-1/2 h-10 sm:h-12 px-3 sm:px-6 rounded-lg bg-[#0e639c] hover:bg-[#1177bb] text-white font-semibold shadow-lg hover:shadow-xl hover:shadow-[#0e639c]/30 transition-all flex items-center"
               >
-                <SearchIcon className="h-5 w-5 mr-2" />
-                Search
+                <SearchIcon className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
+                <span className="hidden sm:inline">Search</span>
               </Button>
             </div>
           </form>
@@ -125,14 +125,14 @@ const Search = () => {
 
         {/* Results Section */}
         {loading ? (
-          <div className="text-center py-32">
-            <div className="inline-block relative mb-8">
-              <div className="animate-spin rounded-full h-20 w-20 border-4 border-[#3e3e42] border-t-[#569cd6] shadow-lg"></div>
+          <div className="text-center py-16 sm:py-24">
+            <div className="inline-block relative mb-6 sm:mb-8">
+              <div className="animate-spin rounded-full h-12 w-12 sm:h-16 sm:w-16 border-4 border-[#3e3e42] border-t-[#569cd6] shadow-lg"></div>
               <div className="absolute inset-0 flex items-center justify-center">
-                <SearchIcon className="h-8 w-8 text-[#569cd6]" />
+                <SearchIcon className="h-6 w-6 sm:h-8 sm:w-8 text-[#569cd6]" />
               </div>
             </div>
-            <p className="text-[#9d9d9d] text-xl font-medium">Searching...</p>
+            <p className="text-[#9d9d9d] text-lg sm:text-xl font-medium">Searching...</p>
           </div>
         ) : query && snippets.length === 0 ? (
           <>
@@ -157,8 +157,7 @@ const Search = () => {
                     Showing <span className="text-[#d4d4d4] font-semibold">{allSnippets.length}</span> available snippet{allSnippets.length !== 1 ? "s" : ""}
                   </p>
                 </div>
-
-                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                   {allSnippets.map((snippet, index) => (
                     <div
                       key={snippet.id}
@@ -184,7 +183,7 @@ const Search = () => {
             </div>
 
             {/* Snippets Grid */}
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
               {snippets.map((snippet, index) => (
                 <div
                   key={snippet.id}
